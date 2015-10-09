@@ -3,17 +3,34 @@ var HashTable = function(){
   this._storage = LimitedArray(this._limit);
 };
 
-HashTable.prototype.insert = function(k, v){
+HashTable.prototype.insert = function(k, v) {
   var i = getIndexBelowMaxForKey(k, this._limit);
+  var nodeObj = this._storage.get(i);
+
+  if (nodeObj) {
+    nodeObj[k] = v;
+    this._storage.set(i, nodeObj);
+  } else {
+    var nodeObj = {};
+    nodeObj[k] = v;
+    this._storage.set(i, nodeObj);
+  }
 };
 
-HashTable.prototype.retrieve = function(k){
+HashTable.prototype.retrieve = function(k) {
   var i = getIndexBelowMaxForKey(k, this._limit);
+  var nodeObj = this._storage.get(i);
+  var value;
 
+  if (nodeObj) {
+    value = nodeObj[k];
+  } 
+
+  return value;
 };
 
-HashTable.prototype.remove = function(k){
-
+HashTable.prototype.remove = function(k) {
+  this.insert(k, null);
 };
 
 
