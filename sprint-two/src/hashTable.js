@@ -5,11 +5,7 @@ var HashTable = function(){
 
 HashTable.prototype.insert = function(k, v) {
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var nodeObj = this._storage.get(i);
-
-  if (!nodeObj) {
-    nodeObj = {};
-  }
+  var nodeObj = this._storage.get(i) || {};
 
   nodeObj[k] = v;
   this._storage.set(i, nodeObj);
