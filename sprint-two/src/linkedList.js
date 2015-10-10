@@ -13,7 +13,6 @@ var LinkedList = function() {
     if (list.tail) {
       list.tail.next = node;
     }
-
     list.tail = node;
   };
 

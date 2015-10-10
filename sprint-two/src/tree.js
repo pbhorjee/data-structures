@@ -17,7 +17,6 @@ var treeMethods = {};
 treeMethods.addChild = function(value) {
   var newTree = Tree(value);
   newTree.parent = this;
-
 	this.children.push(newTree);
 };
 
@@ -37,7 +36,6 @@ treeMethods.removeFromParent = function() {
   if (this.parent) {
     this.parent.children = _.without(this.parent.children, this);
   }
-
   this.parent = null;
 
   return this;
