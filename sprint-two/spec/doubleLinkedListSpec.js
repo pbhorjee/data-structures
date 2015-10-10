@@ -1,8 +1,8 @@
-describe('linkedList', function() {
+describe('doubleLinkedList', function() {
   var linkedList;
 
   beforeEach(function() {
-    linkedList = LinkedList();
+    linkedList = DoubleLinkedList();
   });
 
   it('should have a head and tail', function() {
@@ -10,10 +10,13 @@ describe('linkedList', function() {
     expect(linkedList).to.have.property("tail");
   });
 
-  it('should have methods named "addToTail", "removeHead", and "contains"', function() {
+  it('should have methods named "addToTail", "removeHead", "insertAfter", "getNodeByValue", "insertBefore", and "contains"', function() {
     expect(linkedList.addToTail).to.be.a("function");
     expect(linkedList.removeHead).to.be.a("function");
     expect(linkedList.contains).to.be.a("function");
+    expect(linkedList.getNodeByValue).to.be.a("function");
+    expect(linkedList.insertAfter).to.be.a("function");
+    expect(linkedList.insertBefore).to.be.a("function");
   });
 
   it('should designate a new tail when new nodes are added', function(){

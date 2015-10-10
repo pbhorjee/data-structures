@@ -19,6 +19,7 @@ var LinkedList = function() {
 
   list.removeHead = function() {
     var oldHead = list.head;
+
     list.head = oldHead.next;
     delete list[oldHead.value];
 
@@ -28,15 +29,36 @@ var LinkedList = function() {
   list.contains = function(target) {
     thisNode = list.head;
 
-    do {
+    while (thisNode) {
       if (thisNode.value === target) {
         return true;
       }
-
       thisNode = thisNode.next;
-    } while (thisNode === list.tail)
+    }
 
     return false;
+  };
+
+  list.getNodeByValue = function(target) {
+    thisNode = list.head;
+
+    while (thisNode) {
+      if (thisNode.value === target) {
+        return thisNode;
+      }
+      thisNode = thisNode.next;
+    }
+  };
+
+  list.insertAfter = function(thisNode, value) {
+    var newNode = new LLNode(value);
+
+    if (thisNode.next) {
+      newNode.next = thisNode.next;
+    }
+    thisNode.next = newNode;
+
+    return newNode;
   };
 
   return list;
