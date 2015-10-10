@@ -53,23 +53,24 @@ var DoubleLinkedList = function() {
   };
 
   list.insertAfter = function(thisNode, value) {
-    var newNode = new DLLNode(value);
+    var newNode = new LLNode(value);
 
-    newNode.previous = thisNode;
     if (thisNode.next) {
       newNode.next = thisNode.next;
     }
     thisNode.next = newNode;
+
+    return newNode;
   };
 
   list.insertBefore = function(thisNode, value) {
     var newNode = new DLLNode(value);
 
-    newNode.previous = thisNode;
-    if (thisNode.next) {
-      newNode.next = thisNode.next;
+    newNode.next = thisNode;
+    if (thisNode.previous) {
+      newNode.previous = thisNode.previous;
     }
-    thisNode.next = newNode;
+    thisNode.previous = newNode;
 
     return newNode;
   };

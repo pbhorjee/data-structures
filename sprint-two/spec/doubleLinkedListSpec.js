@@ -34,6 +34,18 @@ describe('doubleLinkedList', function() {
     expect(linkedList.head.value).to.equal(5);
   });
 
+  it('should return a new node when insertAfter is called', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.insertAfter(linkedList.head, 4.5).value).to.equal(4.5);
+  });
+
+  it('should return a new node when insertBefore is called', function(){
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.insertBefore(linkedList.tail, 4.5).value).to.equal(4.5);
+  });
+
   it("should return the value of the former head when removeHead is called", function(){
     linkedList.addToTail(4);
     expect(linkedList.removeHead()).to.equal(4);
