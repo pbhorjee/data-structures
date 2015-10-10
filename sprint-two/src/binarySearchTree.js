@@ -1,8 +1,8 @@
+
 var BinarySearchTree = function(value) {
   var newTree = {};
+  
   newTree.value = value;
-
-  // newTree.children = [];
   newTree.left = null;
   newTree.right = null;
 
