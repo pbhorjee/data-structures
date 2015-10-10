@@ -7,6 +7,7 @@ var Tree = function(value) {
 
   newTree.addChild = treeMethods.addChild;
   newTree.contains = treeMethods.contains;
+  newTree.removeFromParent = treeMethods.removeFromParent;
 
   return newTree;
 };
@@ -17,7 +18,7 @@ treeMethods.addChild = function(value) {
   var newTree = Tree(value);
   newTree.parent = this;
 
-	this.children.push(Tree(value));
+	this.children.push(newTree);
 };
 
 treeMethods.contains = function(target, children) {
@@ -30,6 +31,16 @@ treeMethods.contains = function(target, children) {
         return treeMethods.contains(target, child.children);
       }
   });
+};
+
+treeMethods.removeFromParent = function() {
+  if (this.parent) {
+    this.parent.children = _.without(this.parent.children, this);
+  }
+
+  this.parent = null;
+
+  return this;
 };
 
 
