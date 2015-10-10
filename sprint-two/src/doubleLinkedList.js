@@ -1,11 +1,11 @@
-var LinkedList = function() {
+var DoubleLinkedList = function() {
   var list = {};
 
   list.head = null;
   list.tail = null;
 
   list.addToTail = function(value) {
-    var node = new LLNode(value);
+    var node = new DLLNode(value);
 
     if (!list.head) {
       list.head = node;
@@ -42,10 +42,11 @@ var LinkedList = function() {
   return list;
 };
 
-var LLNode = function(value) {
+var DLLNode = function(value) {
   var node = {};
 
   node.value = value;
+  node.previous = null;
   node.next = null;
 
   return node;

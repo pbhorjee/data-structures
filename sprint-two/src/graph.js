@@ -10,7 +10,7 @@ var Graph = function() {
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-	var node = new Node(node);
+	var node = new GNode(node);
 
 	this.nodes[node.value] = node;
 };
@@ -59,7 +59,7 @@ Graph.prototype.forEachNode = function(cb) {
   }
 }
 
-var Node = function(value) {
+var GNode = function(value) {
 	this.value = value;
   this.nodeEdges = {};
 };
