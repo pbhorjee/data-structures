@@ -2,6 +2,7 @@ var Tree = function(value) {
   var newTree = {};
 
   newTree.value = value;
+  newTree.parent = null;
   newTree.children = [];
 
   newTree.addChild = treeMethods.addChild;
@@ -13,6 +14,9 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  var newTree = Tree(value);
+  newTree.parent = this;
+
 	this.children.push(Tree(value));
 };
 
