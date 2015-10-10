@@ -17,31 +17,16 @@ treeMethods.addChild = function(value) {
 	this.children.push(Tree(value));
 };
 
-treeMethods.contains = function(target) {
-	var found = false;
+treeMethods.contains = function(target, children) {
+  children = children || this.children;
 
-	var find = function(children){
-		if (found) {
-			return;
-		}
-		
-		for (var i = 0; i < children.length; i++) {
-			if (children[i].value === target) {
-				found = true;
-				break;
-			} else {
-				if (children[i].children) {
-					find(children[i].children);
-				}
-			}
-		}
-	}
-
-	if (this.children) {
-		find(this.children);
-	}
-
-	return found;
+  return _.any(children, function(child) {
+      if (child.value === target) {
+        return true;
+      } else if (child.children) {
+        return treeMethods.contains(target, child.children);
+      }
+  });
 };
 
 
